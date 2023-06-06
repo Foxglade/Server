@@ -10,10 +10,11 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
   });
 
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg.message);
-    io.emit('chat message', { sender: 'Sender', message: msg.message });
-  });
+ socket.on('chat message', (msg) => {
+   console.log('Received message:', msg);
+   io.emit('chat message', { sender: msg.sender, message: msg.message });
+ });
+
 
 });
 
