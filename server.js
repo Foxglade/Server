@@ -11,9 +11,10 @@ io.on('connection', (socket) => {
   });
 
   socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
+    console.log('message: ' + msg.message);
+    io.emit('chat message', { sender: 'Sender', message: msg.message });
   });
+
 });
 
 const port = process.env.PORT || 3000;
